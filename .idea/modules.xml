@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versableAPI.iml" filepath="$PROJECT_DIR$/.idea/modules/versableAPI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versableAPI_main.iml" filepath="$PROJECT_DIR$/.idea/modules/versableAPI_main.iml" group="versableAPI" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versableAPI_test.iml" filepath="$PROJECT_DIR$/.idea/modules/versableAPI_test.iml" group="versableAPI" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versable-api.iml" filepath="$PROJECT_DIR$/.idea/modules/versable-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versable-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/versable-api_main.iml" group="versable-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versable-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/versable-api_test.iml" group="versable-api" />
     </modules>
   </component>
 </project>

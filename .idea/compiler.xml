@@ -19,6 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="versable-api_main" target="1.8" />
+      <module name="versable-api_test" target="1.8" />
       <module name="versableAPI_main" target="1.8" />
       <module name="versableAPI_test" target="1.8" />
     </bytecodeTargetLevel>

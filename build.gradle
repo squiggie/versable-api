@@ -30,7 +30,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+    compile 'org.mongodb:mongo-java-driver:3.2.2'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 
