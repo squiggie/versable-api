@@ -1,14 +1,12 @@
 package com.versable;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 public class VerseController {
@@ -36,6 +34,19 @@ public class VerseController {
         List<Verse> verses = mVerseRepository.findAll();
         Map<String, Object> response = new LinkedHashMap<String, Object>();
         response.put("verses",verses);
+        return response;
+    }
+
+    @RequestMapping(value = "/verses/{id}", method = RequestMethod.GET)
+    public Map<String, Object> getVerseById(@PathVariable String id){
+        Map<String, Object> response = new LinkedHashMap<String, Object>();
+        if (id.contains("random")){
+            List<Verse> verses = mVerseRepository.findAll();
+            response.put("verses",verses.get(ThreadLocalRandom.current().nextInt(0,verses.size() + 1)));
+        } else {
+            Verse verse = mVerseRepository.findOne(id);
+            response.put("verses",verse);
+        }
         return response;
     }
 }
