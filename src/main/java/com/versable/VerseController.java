@@ -3,6 +3,7 @@ package com.versable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class VerseController {
     @Autowired
     private VerseRepository mVerseRepository;
+    private VotdRepository mVotdRepository;
 
     @RequestMapping(value = "/verses/",method = RequestMethod.POST)
     public Map<String, Object> createVerse(@RequestBody Map<String, Object> verseMap){
@@ -52,9 +54,15 @@ public class VerseController {
 
     @RequestMapping(value = "/votd/", method = RequestMethod.GET)
     public Map<String, Object> getVOTD(){
-        List<Verse> verses = mVerseRepository.findAll();
+        Calendar now = Calendar.getInstance();
+        now.clear(Calendar.HOUR);
+        now.clear(Calendar.MINUTE);
+        now.clear(Calendar.SECOND);
+        now.clear(Calendar.MILLISECOND);
+        Votd votd = mVotdRepository.findOne("{\"date\":\"" + now.getTimeInMillis() + "\"}");
+        Verse verse = mVerseRepository.findOne("{\"_id\":\"" + votd.getVerseID() + "\"}");
         Map<String, Object> response = new LinkedHashMap<String, Object>();
-        response.put("verses",verses);
+        response.put("verses",verse);
         return response;
     }
 }
