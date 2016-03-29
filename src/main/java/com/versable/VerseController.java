@@ -49,4 +49,12 @@ public class VerseController {
         }
         return response;
     }
+
+    @RequestMapping(value = "/votd/", method = RequestMethod.GET)
+    public Map<String, Object> getVOTD(){
+        List<Verse> verses = mVerseRepository.findAll();
+        Map<String, Object> response = new LinkedHashMap<String, Object>();
+        response.put("verses",verses);
+        return response;
+    }
 }
