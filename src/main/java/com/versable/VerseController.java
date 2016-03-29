@@ -62,7 +62,17 @@ public class VerseController {
         Votd votd = mVotdRepository.findOne("{\"date\":\"" + now.getTimeInMillis() + "\"}");
         Verse verse = mVerseRepository.findOne("{\"_id\":\"" + votd.getVerseID() + "\"}");
         Map<String, Object> response = new LinkedHashMap<String, Object>();
-        response.put("verses",verse);
+        response.put("verse",verse);
+        return response;
+    }
+
+    @RequestMapping(value = "/votd/",method = RequestMethod.POST)
+    public Map<String, Object> createVotd(@RequestBody Map<String, Object> votdMap){
+        Votd votd = new Votd(votdMap.get("verseID").toString(),votdMap.get("imageURL").toString(),Long.valueOf(votdMap.get("date").toString()));
+        mVotdRepository.save(votd);
+        Map<String, Object> response = new LinkedHashMap<String, Object>();
+        response.put("message", "Votd created successfully");
+        response.put("verse", votd);
         return response;
     }
 }
